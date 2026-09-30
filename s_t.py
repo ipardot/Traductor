@@ -15,6 +15,66 @@ from gtts import gTTS
 from googletrans import Translator
 
 
+st.markdown("""
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=EB+Garamond:wght@400;600&display=swap');
+
+.stApp {
+    background-color: #F3ECD9;
+    background-image:
+        repeating-linear-gradient(0deg, rgba(27,67,50,0.04) 0px, rgba(27,67,50,0.04) 1px, transparent 1px, transparent 26px);
+}
+
+h1, h2, h3 {
+    font-family: 'Cormorant Garamond', serif !important;
+    color: #1B4332 !important;
+    letter-spacing: 0.03em;
+    border-bottom: 2px solid #C9A227;
+    padding-bottom: 4px;
+}
+
+p, li, label, div[data-testid="stMarkdownContainer"], .stMarkdown {
+    font-family: 'EB Garamond', serif !important;
+    font-size: 1.15rem !important;
+    color: #2B2B24 !important;
+}
+
+section[data-testid="stSidebar"] {
+    background-color: #E9E0C8;
+    border-right: 3px double #C9A227;
+}
+
+div[data-testid="stImage"] img {
+    border: 10px solid #FDFBF3;
+    outline: 2px solid #1B4332;
+    outline-offset: -6px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+}
+
+div[data-baseweb="select"] > div {
+    font-family: 'EB Garamond', serif !important;
+    background-color: #FDFBF3 !important;
+    border: 1.5px solid #1B4332 !important;
+    border-radius: 2px !important;
+}
+
+.stCheckbox label p {
+    font-family: 'EB Garamond', serif !important;
+}
+
+audio {
+    filter: sepia(15%);
+    border: 1.5px solid #1B4332;
+    border-radius: 4px;
+}
+
+hr, div[data-testid="stMarkdownContainer"] h2 {
+    color: #A6182C !important;
+    border-bottom: 2px solid #A6182C;
+}
+</style>
+""", unsafe_allow_html=True)
+
 st.title("TRADUCTOR.")
 st.subheader("Escucho lo que quieres traducir.")
 
