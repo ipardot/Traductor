@@ -79,69 +79,84 @@ if result:
     text = str(result.get("GET_TEXT"))
     in_lang = st.selectbox(
         "Selecciona el lenguaje de Entrada",
-        ("Inglés", "Español", "Bengali", "Coreano", "Mandarín", "Japonés"),
+        ("Español", "Francés", "Portugués", "Alemán", "Bengali", "Coreano", "Japonés"),
     )
-    if in_lang == "Inglés":
-        input_language = "en"
-    elif in_lang == "Español":
+    if in_lang == "Español":
         input_language = "es"
+    elif in_lang == "Francés":
+        input_language = "fr"
+    elif in_lang == "Portugués":
+        input_language = "pt"
+    elif in_lang == "Alemán":
+        input_language = "de"
     elif in_lang == "Bengali":
         input_language = "bn"
     elif in_lang == "Coreano":
         input_language = "ko"
-    elif in_lang == "Mandarín":
-        input_language = "zh-cn"
     elif in_lang == "Japonés":
         input_language = "ja"
     
     out_lang = st.selectbox(
         "Selecciona el lenguaje de salida",
-        ("Inglés", "Español", "Bengali", "Coreano", "Mandarín", "Japonés"),
+        ("Español", "Francés", "Portugués", "Alemán", "Bengali", "Coreano", "Japonés"),
     )
-    if out_lang == "Inglés":
-        output_language = "en"
-    elif out_lang == "Español":
+    if out_lang == "Español":
         output_language = "es"
+    elif out_lang == "Francés":
+        output_language = "fr"
+    elif out_lang == "Portugués":
+        output_language = "pt"
+    elif out_lang == "Alemán":
+        output_language = "de"
     elif out_lang == "Bengali":
         output_language = "bn"
     elif out_lang == "Coreano":
         output_language = "ko"
-    elif out_lang == "Mandarín":
-        output_language = "zh-cn"
     elif out_lang == "Japonés":
         output_language = "ja"
     
-    english_accent = st.selectbox(
-        "Selecciona el acento",
-        (
-            "Defecto",
-            "Español",
-            "Reino Unido",
-            "Estados Unidos",
-            "Canada",
-            "Australia",
-            "Irlanda",
-            "Sudáfrica",
-        ),
-    )
-    
-    if english_accent == "Defecto":
+    # El acento (tld) depende del idioma de salida elegido,
+    # solo se muestran las variantes que tienen sentido para ese idioma.
+    if output_language == "es":
+        accent_choice = st.selectbox(
+            "Selecciona el acento",
+            ("Colombiano", "Castellano"),
+        )
+        if accent_choice == "Colombiano":
+            tld = "com.co"
+        elif accent_choice == "Castellano":
+            tld = "es"
+    elif output_language == "fr":
+        accent_choice = st.selectbox(
+            "Selecciona el acento",
+            ("Francia", "Canadá"),
+        )
+        if accent_choice == "Francia":
+            tld = "fr"
+        elif accent_choice == "Canadá":
+            tld = "ca"
+    elif output_language == "pt":
+        accent_choice = st.selectbox(
+            "Selecciona el acento",
+            ("Brasil", "Portugal"),
+        )
+        if accent_choice == "Brasil":
+            tld = "com.br"
+        elif accent_choice == "Portugal":
+            tld = "pt"
+    elif output_language == "de":
+        accent_choice = st.selectbox(
+            "Selecciona el acento",
+            ("Alemania", "Austria", "Suiza"),
+        )
+        if accent_choice == "Alemania":
+            tld = "de"
+        elif accent_choice == "Austria":
+            tld = "at"
+        elif accent_choice == "Suiza":
+            tld = "ch"
+    else:
         tld = "com"
-    elif english_accent == "Español":
-        tld = "com.mx"
-    
-    elif english_accent == "Reino Unido":
-        tld = "co.uk"
-    elif english_accent == "Estados Unidos":
-        tld = "com"
-    elif english_accent == "Canada":
-        tld = "ca"
-    elif english_accent == "Australia":
-        tld = "com.au"
-    elif english_accent == "Irlanda":
-        tld = "ie"
-    elif english_accent == "Sudáfrica":
-        tld = "co.za"
     
     
     def text_to_speech(input_language, output_language, text, tld):
@@ -181,15 +196,3 @@ if result:
                     print("Deleted ", f)
 
     remove_files(7)
-           
-
-
-        
-    
-
-
-
-        
-    
-
-
